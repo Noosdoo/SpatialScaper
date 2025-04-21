@@ -100,6 +100,7 @@ def create_srir_sofa(
 
     assert rirs.shape == (M, R, N)
     assert source_pos.shape == (M, C)
+    assert mic_pos.shape == (M, C)
 
     # Need to delete it first if file already exists
     if os.path.exists(filepath):
@@ -146,13 +147,13 @@ def create_srir_sofa(
     listenerUpVar = rootgrp.createVariable("ListenerUp", "f8", ("I", "C"))
     listenerUpVar.Units = "metre"
     listenerUpVar.Type = "cartesian"
-    listenerUpVar[:] = np.asarray([0, 0, 1])
+    listenerUpVar[:] = np.asarray([[0, 0, 1]])
 
     # Listener looking forward (+x direction)
     listenerViewVar = rootgrp.createVariable("ListenerView", "f8", ("I", "C"))
     listenerViewVar.Units = "metre"
     listenerViewVar.Type = "cartesian"
-    listenerViewVar[:] = np.asarray([1, 0, 0])
+    listenerViewVar[:] = np.asarray([[1, 0, 0]])
 
     # single emitter for each measurement
     emitterPositionVar = rootgrp.createVariable(
@@ -171,12 +172,12 @@ def create_srir_sofa(
     sourceUpVar = rootgrp.createVariable("SourceUp", "f8", ("I", "C"))
     sourceUpVar.Units = "metre"
     sourceUpVar.Type = "cartesian"
-    sourceUpVar[:] = np.asarray([0, 0, 1])
+    sourceUpVar[:] = np.asarray([[0, 0, 1]])
 
     sourceViewVar = rootgrp.createVariable("SourceView", "f8", ("I", "C"))
     sourceViewVar.Units = "metre"
     sourceViewVar.Type = "cartesian"
-    sourceViewVar[:] = np.asarray([1, 0, 0])
+    sourceViewVar[:] = np.asarray([[1, 0, 0]])
 
     receiverPositionVar = rootgrp.createVariable(
         "ReceiverPosition", "f8", ("R", "C", "I")

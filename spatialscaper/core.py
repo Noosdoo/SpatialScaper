@@ -65,8 +65,7 @@ Event = namedtuple(
 )
 
 # Paths for room SOFA files
-__SPATIAL_SCAPER_RIRS_DIR__ = "spatialscaper_RIRs"
-__PATH_TO_AMBIENT_NOISE_FILES__ = os.path.join("source_data", "tau", "TAU-SNoise_DB")
+__PATH_TO_AMBIENT_NOISE_FILES__ = os.path.join("/scratch/ci411/rirs","source_data", "tau", "TAU-SNoise_DB") #needs to be updated
 __ROOM_RIR_FILE__ = {
     "metu": "metu_{fmt}.sofa",
     "arni": "arni_{fmt}.sofa",
@@ -553,8 +552,7 @@ class Scaper:
         """
         room_sofa_path = os.path.join(
             self.rir_dir,
-            __SPATIAL_SCAPER_RIRS_DIR__,
-            __ROOM_RIR_FILE__[self.room].format(fmt=self.format),
+            f'{self.room}_{self.format}.sofa',
         )
         return load_pos(room_sofa_path, doas=False)
 
@@ -571,8 +569,7 @@ class Scaper:
         """
         room_sofa_path = os.path.join(
             self.rir_dir,
-            __SPATIAL_SCAPER_RIRS_DIR__,
-            __ROOM_RIR_FILE__[self.room].format(fmt=self.format),
+            f'{self.room}_{self.format}.sofa',
         )
         all_irs, ir_sr, all_ir_xyzs = load_rir_pos(room_sofa_path, doas=False)
         ir_sr = ir_sr.data[0]
