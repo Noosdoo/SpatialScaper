@@ -38,8 +38,8 @@ def cartesian_to_polar(cartesian_coords, include_radius=True):
     """
     x, y, z = cartesian_coords[:, 0], cartesian_coords[:, 1], cartesian_coords[:, 2]
 
-    # Radius (distance)
-    radius = np.sqrt(x**2 + y**2 + z**2)
+    # Radius (distance, in centimeters)
+    radius = np.sqrt(x**2 + y**2 + z**2) * 100
 
     # Azimuth (angle in the XY plane)
     azimuth = np.arctan2(y, x)
