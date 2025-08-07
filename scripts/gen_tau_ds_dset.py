@@ -17,7 +17,7 @@ N_EVENTS_MEAN = 15  # Mean number of foreground events in a soundscape
 N_EVENTS_STD = 6  # Standard deviation of the number of foreground events
 DURATION = 60.0  # Duration in seconds of each soundscape
 SR = 24000  # SpatialScaper default sampling rate for the audio files
-OUTPUT_DIR = f"/scratch/ci411/SELD/seld_datasets/DS_ISM/d_{density}"  # Directory to store the generated soundscapes
+OUTPUT_DIR = f"/scratch/ci411/SELD/seld_datasets/DS_ISM_revert/d_{density}"  # Directory to store the generated soundscapes
 REF_DB = (
     -65
 )  # Reference decibel level for the background ambient noise. Try making this random too!
@@ -44,7 +44,7 @@ def generate_soundscape(room, room_idx, fold_idx, mix_idx):
     n_events = n_events if n_events > 0 else 1  # n_events should be greater than zero
 
     for _ in range(n_events):
-        ssc.add_event(shape='circular')  # randomly choosing and spatializing an FSD50K sound event
+        ssc.add_event()  # randomly choosing and spatializing an FSD50K sound event
 
     audiofile = os.path.join(OUTPUT_DIR, "foa_dev", "audio", track_name)
     labelfile = os.path.join(OUTPUT_DIR, "metadata_dev", "labels", track_name)

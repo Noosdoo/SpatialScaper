@@ -14,7 +14,7 @@ N_EVENTS_MEAN = 15  # Mean number of foreground events in a soundscape
 N_EVENTS_STD = 6  # Standard deviation of the number of foreground events
 DURATION = 60.0  # Duration in seconds of each soundscape
 SR = 24000  # SpatialScaper default sampling rate for the audio files
-OUTPUT_DIR = "/scratch/ci411/SELD/seld_datasets/SSBaseline"  # Directory to store the generated soundscapes
+OUTPUT_DIR = "/scratch/ci411/SELD/seld_datasets/SSBaseline_revert"  # Directory to store the generated soundscapes
 REF_DB = (
     -65
 )  # Reference decibel level for the background ambient noise. Try making this random too!

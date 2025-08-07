@@ -4,7 +4,7 @@ import pickle
 
 import pyroomacoustics as pra
 from pyroomacoustics import directivities as dr
-from room_scaper import sofa_utils, tau_loading
+from spatialscaper import sofa_utils, tau_utils
 
 
 def deg2rad(deg):
